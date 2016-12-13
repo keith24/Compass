@@ -1,7 +1,7 @@
-# Compass web app
+# Compass
 ###### by [Keith Irwin](https://keithirwin.us/)
 
-Uses [DeviceOrientationEvent](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent) to show a phone's polar orientation.  
+Compass is a web app written in plain HTML/CSS/JS.  It uses [DeviceOrientationEvent](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent) and [geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation) to show a smartphone's GPS coordinates and polar orientation.  
 
 ## Instructions
 
@@ -13,7 +13,7 @@ No, not really.  Results may vary.  As of this writing, Firefox and Chrome brows
 
 ## Known issues
 
-* When the screen is rotated, the image gets rotated 90 degrees.  I don' know how this could be fixed. 
+* When the screen is rotated, the image gets rotated 90 degrees.  I don't know how this could be fixed. 
 
 ## Image sources
 
