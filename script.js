@@ -1,7 +1,21 @@
 window.addEventListener("deviceorientation", setRose, true);
 
-function tryGPS() {
-	
+if (!navigator.geolocation){ $('#no-gps').show(); }
+else {
+	navigator.geolocation.watchPosition(
+		// success
+		function(e) {
+			$('#lat').text(e.coords.latitude);
+			$('#lon').text(e.coords.longitude);
+		}, 
+		// error
+		function() {
+			$('.coord').hide();
+			$('#no-gps').show();
+		}, 
+		// options
+		{ enableHighAccuracy:true }
+	);
 }
 
 function setRose(e) {
