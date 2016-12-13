@@ -7,8 +7,12 @@ body {
 }
 
 .error, noscript {
-	color: #E00;
+	color: #F22;
+	font-size: 22px;
 	text-align: center;
+	padding: 4vw;
+	background-color: #111;
+	background-color: rgba(0,0,0,.85);
 } .error {
 	display: none;
 }
@@ -18,22 +22,28 @@ body {
 }
 
 @media (orientation:portrait) {
-	header, main, footer {
+	header, main, footer, .error, noscript {
+		position: absolute;
+	} header, main, footer {
 		width: 90vw;
 		padding: 5vw;
-		position: absolute;
+	} .error, noscript {
+		width: 82vw;
 	}
 	header {
 		height: calc(60vh - 60vw);
 		top: 0;
-	}
-	main {
+	} main {
 		height: 90vw;
 		top: calc(60vh - 50vw);
-	}
-	footer {
+	} footer {
 		height: calc(40vh - 60vw);
 		bottom: 0;
+	}
+	main .error {
+		top: 50%;
+		transform: translateY(-50%);
+		padding: 35vw 4vw;
 	}
 }
 @media (orientation:landscape) {

@@ -1,10 +1,14 @@
 window.addEventListener("deviceorientation", setRose, true);
 
+function tryGPS() {
+	
+}
+
 function setRose(e) {
 	
 	// No orientation data
 	if(!e.absolute) {
-		$('#rose-error').show();
+		$('#no-dir').show();
 	} else {
 		
 		// Rotate rose
@@ -14,6 +18,7 @@ function setRose(e) {
 			'-webkit-transform': rot,
 			'transform': rot
 		});
+
 	}
 	
 }
