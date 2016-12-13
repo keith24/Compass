@@ -59,28 +59,11 @@
 		
 		<footer>
 			<div style="float:left"><a href="https://github.com/keith24/Compass/blob/master/README.md">About</a></div>
-			<div style="float:right">Made by <a href="https://keithirwin.us/">Keith Irwin</a>.</div>
+			<div style="float:right">by <a href="https://keithirwin.us/">Keith Irwin</a>.</div>
 		</footer>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script>
-			window.addEventListener("deviceorientation", handleOrientation, true);
-			function handleOrientation(event) {
-				
-				// No orientation data
-				if(!event.absolute) {
-					$('#rose-error').show();
-
-				} else {
-					var rot = 'rotate('+event.alpha.toString().substring(0,5)+'deg)';
-					$('#rose').css({
-						'-ms-transform': rot,
-						'-webkit-transform': rot,
-						'transform': rot
-					});
-				}
-			}
-		</script>
-		
+		<script src="script.js"></script>
+			
 	</body>
 </html>
