@@ -1,0 +1,45 @@
+body {
+	margin: 0;
+	height: 100vh;
+	width: 100vw;
+	background: #000;
+	color: #EEE;
+}
+
+main {
+	text-align: center;
+}
+
+#error {
+	color: #E00;
+}
+
+@media (orientation:portrait) {
+	main {
+		width: 100vw;
+		height: 100vw;
+		position: relative;
+		top:
+	}
+	img {
+		width: 95vw;
+		height: 95vw;
+		
+	}
+}
+@media (orientation:landscape) {
+		
+	img {
+		width: 95vh;
+		height: 95vh;
+	}
+}
+
+#error { display: none; }
+
+a {
+	color: inherit;
+	text-decoration: underline;
+} a:hover {
+	text-decoration: none;
+}
