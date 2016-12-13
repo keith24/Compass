@@ -6,33 +6,38 @@ body {
 	color: #EEE;
 }
 
-main {
+.error, noscript {
+	color: #E00;
 	text-align: center;
+} .error {
+	display: none;
 }
 
-#error {
-	color: #E00;
+#rose {
+	width: 100%;
 }
 
 @media (orientation:portrait) {
-	main {
-		width: 100vw;
-		height: 100vw;
-		position: relative;
-		top:
+	header, main, footer {
+		width: 90vw;
+		padding: 5vw;
+		position: absolute;
 	}
-	img {
-		width: 95vw;
-		height: 95vw;
-		
+	header {
+		height: calc(60vh - 60vw);
+		top: 0;
+	}
+	main {
+		height: 90vw;
+		top: calc(60vh - 50vw);
+	}
+	footer {
+		height: calc(40vh - 60vw);
+		bottom: 0;
 	}
 }
 @media (orientation:landscape) {
-		
-	img {
-		width: 95vh;
-		height: 95vh;
-	}
+	
 }
 
 #error { display: none; }
