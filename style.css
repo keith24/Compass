@@ -11,14 +11,23 @@ body {
 	font-size: 22px;
 	text-align: center;
 	padding: 4vw;
-	background-color: #111;
+	background-color: #000;
 	background-color: rgba(0,0,0,.85);
 } .error {
 	display: none;
 }
 
+.coord {
+	height: 50%;
+	text-align: center;
+	font-size: 44px;
+	font-family: monospace;
+}
+
 #rose {
 	width: 100%;
+	-webkit-transition-duration: 2s;
+	transition-duration: .2s;
 }
 
 @media (orientation:portrait) {

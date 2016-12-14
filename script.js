@@ -4,9 +4,13 @@ if (!navigator.geolocation){ $('#no-gps').show(); }
 else {
 	navigator.geolocation.watchPosition(
 		// success
-		function(e) {
-			$('#lat').text(e.coords.latitude);
-			$('#lon').text(e.coords.longitude);
+		function(pos) {
+			var lat = pos.coords.latitude.toFixed(5);
+			var lon = pos.coords.longitude.toFixed(5);
+			lat = (lat.substring(0,1)=='-')? lat.substring(1)+' S' : lat+' N';
+			lon = (lon.substring(0,1)=='-')? lon.substring(1)+' E' : lon+' W';
+			$('#lat').text(lat);
+			$('#lon').text(lon);
 		}, 
 		// error
 		function() {
