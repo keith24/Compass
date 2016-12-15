@@ -5,6 +5,8 @@
 	"description": "Compass and GPS web app",
 	"homepage_url": "https://github.com/keith24/Compass",
 	
+	"orientation": "portrait",
+	"theme_color": "black",
 	"background_color": "black",
 	"display": "standalone",
 	"icons": [{
