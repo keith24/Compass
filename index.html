@@ -3,8 +3,8 @@
 		
 		<!-- Metadata -->
 		<title>Compass</title>
-		<link rel="manifest" href="manifest.webmanifest">
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<link rel="manifest" href="manifest.webmanifest">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta charset="UTF-8">
 		<meta name="author" content="Keith Irwin">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
@@ -42,10 +42,13 @@
 	<body>
 		
 		<header>
-			<div class='error' id='no-gps'>No GPS data available. </div>
 			
-			<div class='coord' id='lat'></div>
-			<div class='coord' id='lon'></div>
+			<div class='error' id='no-gps'>No GPS data available. </div>
+			<div class='coord' id='lat'>0.00000 N</div>
+			<div class='coord' id='lon'>0.00000 E</div>
+
+			<div class='coord' id='alt'>0.0 m</div>
+			<div class='error' id='no-alt'>No altitude data available. </div>
 			
 		</header>
 		
@@ -53,17 +56,19 @@
 			
 			<noscript>You need javascript to use this. </noscript>
 			<div class='error' id='no-dir'>No direction available.  Try this on a smartphone with an internal compass.</div>
+			<div class='error' id='rotated'>Note: the compass may be 90&deg; off when used in landscape mode.</div>
 			
 			<img id='rose' src="rose.svg">
 			
 		</main>
 		
 		<footer>
-			<div style="float:left"><a href="https://github.com/keith24/Compass/blob/master/README.md">About</a></div>
-			<div style="float:right">by <a href="https://keithirwin.us/">Keith Irwin</a></div>
+			<div id='about'><a href="https://github.com/keith24/Compass/blob/master/README.md">About</a></div>
+			<div id='by'>by <a href="https://keithirwin.us/">Keith Irwin</a></div>
 		</footer>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnM0oMEWtnYTEaHURDQTt6BK5BuGGH2E4&callback=gmapsCB"></script>
 		<script src="script.js"></script>
 			
 	</body>

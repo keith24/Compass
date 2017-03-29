@@ -6,7 +6,12 @@ body {
 	color: #EEE;
 }
 
+header, main, footer, .error, noscript {
+	position: absolute;
+}
+
 .error, noscript {
+	z-index: 10;
 	color: #F22;
 	font-size: 22px;
 	text-align: center;
@@ -18,7 +23,7 @@ body {
 }
 
 .coord {
-	height: 50%;
+	height: 33%;
 	text-align: center;
 	font-size: 44px;
 	font-family: monospace;
@@ -31,23 +36,26 @@ body {
 }
 
 @media (orientation:portrait) {
-	header, main, footer, .error, noscript {
-		position: absolute;
-	} header, main, footer {
+	.error#rotated { display: none; }
+	header, main, footer {
 		width: 90vw;
 		padding: 5vw;
 	} .error, noscript {
 		width: 82vw;
 	}
 	header {
-		height: calc(60vh - 60vw);
+		height: calc(65vh - 60vw);
 		top: 0;
 	} main {
 		height: 90vw;
-		top: calc(60vh - 50vw);
+		top: calc(65vh - 50vw);
 	} footer {
-		height: calc(40vh - 60vw);
+		height: calc(35vh - 60vw);
 		bottom: 0;
+	} #about {
+		float: left;
+	} #by {
+		float: right;
 	}
 	main .error {
 		top: 50%;
@@ -56,10 +64,37 @@ body {
 	}
 }
 @media (orientation:landscape) {
-	
+	.error#rotated { display: block; }
+  header, main, footer {
+    height: 90vh;
+    padding: 5vh;
+  } .error, noscript {
+    width: 82vh;/**/
+  }
+  header {
+    width: calc(65vw - 60vh);
+    left: 0;
+  } main {
+    width: 90vh;
+    left: calc(65vw - 50vh);
+  } footer {
+		text-align: right;
+    width: calc(35vw - 60vh);
+    right: 0;
+  } #by {
+		position: absolute;
+		bottom: 5vh;
+		right: 5vh;
+	}
+  main .error {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 35vh 4vh;
+  }
 }
 
-#error { display: none; }
+
+error { display: none; }
 
 a {
 	color: inherit;
