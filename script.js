@@ -1,15 +1,14 @@
-window.addEventListener("deviceorientation", setRose, true);
+'use strict';
+/* global navigator google $ */
+
+// Set units based on browser locale
 const metric = !(window.navigator.language=='en-US'||window.navigator.language=='my');
-var elevator;
-function gmapsCB(){
-	elevator = new google.maps.ElevationService;
-}
 
-
+// Track GPS location
 if (!navigator.geolocation){ $('#no-gps').show(); }
-else {
-	navigator.geolocation.watchPosition(
-		// success
+else { navigator.geolocation.watchPosition(
+		
+		// Got location
 		function(pos) {
 			setAltitude(pos.coords.latitude, pos.coords.longitude);
 			var lat = pos.coords.latitude.toFixed(4);
@@ -18,51 +17,72 @@ else {
 			lon = (lon.substring(0,1)=='-')? lon.substring(1)+' E' : lon+' W';
 			$('#lat').text(lat);
 			$('#lon').text(lon);
-		}, 
-		// error
+		},
+		
+		// Got error
 		function() {
 			$('.coord').hide();
 			$('#rotated').hide();
 			$('#no-gps').show();
 		}, 
-		// options
+		
+		// Options
 		{ enableHighAccuracy:true }
+		
 	);
 }
 
+// Set altitude
 function setAltitude(lat,lon) {
-	if (typeof elevator != 'undefined') {
+	
+	// Create elevator
+	if (typeof elevator == 'undefined') {
+		var elevator = new google.maps.ElevationService;
+	}
+		
+	// Query API
+	else {
 		elevator.getElevationForLocations({
 			'locations': [ new google.maps.LatLng(lat,lon) ]
 		}, function(res) {
-			console.log(res);
-			if (res[0].elevation){
-				$('#no-alt').hide();
-				var alt = res[0].elevation;
-				// Convert
-				if (metric) {
-					alt = alt.toFixed(1)+' m';
-				} else {
-					alt = (alt*0.3048).toFixed(1)+' ft';
-				}
-				// Set element text
-				$('#alt').text(alt);
-			} else {
-				// Show error
+			
+			// Show error
+			if (!res[0].elevation) {
 				if (res.status && res.status!='OK') {
 					$('#no-alt').text('No altitude data available: '+res.status+'. ');
 				}
 				$('#no-alt').show();
 			}
+				
+			// Successfully got altitude
+			else {
+				$('#no-alt').hide();
+				var alt = res[0].elevation;
+				
+				// Convert
+				if (metric) { alt=alt.toFixed(1)+' m'; }
+				else { alt=(alt*0.3048).toFixed(1)+' ft'; }
+				
+				// Set element text
+				$('#alt').text(alt);
+				
+			}
+			
 		});
 	}
 }
 
+// Set compass orientation
 function setRose(e) {
-	if(!e.absolute) { // No orientation data
+	
+	// No orientation data
+	if(!e.absolute) {
 		$('#rotated').hide();
 		$('#no-dir').show();
-	} else {
+	}
+		
+	// Set orientation
+	else {
 		var rot = 'rotate('+e.alpha.toString().substring(0,5)+'deg)';
 		$('#rose').css({
 			'-ms-transform': rot,
@@ -70,4 +90,6 @@ function setRose(e) {
 			'transform': rot
 		});
 	}
+	
 }
+window.addEventListener("deviceorientation", setRose, true);
