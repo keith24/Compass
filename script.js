@@ -1,5 +1,5 @@
 'use strict';
-/* global navigator google $ */
+/* global navigator $ */
 
 // Set units based on browser locale
 const metric = !(window.navigator.language=='en-US'||window.navigator.language=='my');
@@ -10,13 +10,19 @@ else { navigator.geolocation.watchPosition(
 		
 		// Got location
 		function(pos) {
-			setAltitude(pos.coords.latitude, pos.coords.longitude);
-			var lat = pos.coords.latitude.toFixed(4);
-			var lon = pos.coords.longitude.toFixed(4);
-			lat = (lat.substring(0,1)=='-')? lat.substring(1)+' S' : lat+' N';
-			lon = (lon.substring(0,1)=='-')? lon.substring(1)+' E' : lon+' W';
-			$('#lat').text(lat);
-			$('#lon').text(lon);
+			let lat = pos.coords.latitude.toFixed(4);
+			let lon = pos.coords.longitude.toFixed(4);
+			$('#lat').text((lat.substring(0,1)=='-')? lat.substring(1)+' S' : lat+' N');
+			$('#lon').text((lon.substring(0,1)=='-')? lon.substring(1)+' E' : lon+' W');
+			
+			// Get altitude
+			if (pos.coords.altitude){
+				var alt = (metric)? pos.coords.altitude.toFixed(1)+' m':(pos.coords.altitude*0.3048).toFixed(1)+' ft';
+				$('#alt').show().text(alt);
+			}
+			else {
+				$('#alt').hide();
+			}
 		},
 		
 		// Got error
@@ -30,46 +36,6 @@ else { navigator.geolocation.watchPosition(
 		{ enableHighAccuracy:true }
 		
 	);
-}
-
-// Set altitude
-function setAltitude(lat,lon) {
-	
-	// Create elevator
-	if (typeof elevator == 'undefined') {
-		var elevator = new google.maps.ElevationService;
-	}
-		
-	// Query API
-	else {
-		elevator.getElevationForLocations({
-			'locations': [ new google.maps.LatLng(lat,lon) ]
-		}, function(res) {
-			
-			// Show error
-			if (!res[0].elevation) {
-				if (res.status && res.status!='OK') {
-					$('#no-alt').text('No altitude data available: '+res.status+'. ');
-				}
-				$('#no-alt').show();
-			}
-				
-			// Successfully got altitude
-			else {
-				$('#no-alt').hide();
-				var alt = res[0].elevation;
-				
-				// Convert
-				if (metric) { alt=alt.toFixed(1)+' m'; }
-				else { alt=(alt*0.3048).toFixed(1)+' ft'; }
-				
-				// Set element text
-				$('#alt').text(alt);
-				
-			}
-			
-		});
-	}
 }
 
 // Set compass orientation
