@@ -1,8 +1,6 @@
 'use strict'
 /* global navigator $ */
 
-alert('coordinates loaded')
-
 // Set units based on browser locale
 const metric = !(window.navigator.language=='en-US'||window.navigator.language=='my');
 

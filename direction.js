@@ -1,8 +1,6 @@
 'use strict'
 /* global $ GyroNorm */
 
-alert('direction loaded')
-
 
 // Set compass orientation
 var gn = new GyroNorm()
