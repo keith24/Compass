@@ -5,7 +5,7 @@ Compass is a web app written in plain HTML/CSS/JS.  It uses [DeviceOrientationEv
 
 ## Instructions
 
-Open [compass.keithirwin.us](https://compass.keithirwin.us/) on a smartphone with a compass.  Hold the phone level and it should show your direction.  
+Open [compass.fyi](https://compass.fyi/) on a smartphone with a compass.  Hold the phone level and it should show your direction.  
 
 ### Is this accurate? 
 

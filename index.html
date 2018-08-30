@@ -49,9 +49,8 @@
 			<div class='error' id='no-gps'>No GPS data available. </div>
 			<div class='coord' id='lat'>0.00000 N</div>
 			<div class='coord' id='lon'>0.00000 E</div>
-			
-			<div class='coord' id='alt'>0.0 m</div>
 			<div class='error' id='no-alt'>No altitude data available. </div>
+			<div class='coord' id='alt'></div>
 			
 		</header>
 		
@@ -70,9 +69,10 @@
 			<div id='by'>by <a href="https://keithirwin.us/">Keith Irwin</a></div>
 		</footer>
 		
+		<script src="gyronorm.complete.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnM0oMEWtnYTEaHURDQTt6BK5BuGGH2E4"></script>
-		<script src="script.js"></script>
+		<script src="coordinates.js"></script>
+		<script src="direction.js"></script>
 		
 	</body>
 	
