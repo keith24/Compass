@@ -1,5 +1,5 @@
 'use strict';
-/* global navigator $ */
+/* global navigator $ GyroNorm */
 
 // Set units based on browser locale
 const metric = !(window.navigator.language=='en-US'||window.navigator.language=='my');
@@ -39,23 +39,29 @@ else { navigator.geolocation.watchPosition(
 }
 
 // Set compass orientation
-function setRose(e) {
+var gn = new GyroNorm()
+
+gn.init().then(function(){
+  gn.start(function(data){
 	
-	// No orientation data
-	if(!e.absolute) {
-		$('#rotated').hide();
-		$('#no-dir').show();
-	}
-		
-	// Set orientation
-	else {
-		var rot = 'rotate('+e.alpha.toString().substring(0,5)+'deg)';
-		$('#rose').css({
-			'-ms-transform': rot,
-			'-webkit-transform': rot,
-			'transform': rot
-		});
-	}
+		// No orientation data
+		if (!data.do.absolute) {
+			$('#rotated').hide();
+			$('#no-dir').show();
+		}
+			
+		// Set orientation
+		else {
+			const rot = 'rotate('+data.do.alpha.toString().substring(0,5)+'deg)';
+			$('#rose').css({
+				'-ms-transform': rot,
+				'-webkit-transform': rot,
+				'transform': rot
+			})
+		}
 	
-}
+	})
+	
+})	
+	
 window.addEventListener("deviceorientation", setRose, true);
