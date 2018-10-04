@@ -11,7 +11,7 @@ if (!navigator.geolocation) $('#no-gps').show()
 // Start tracking
 else navigator.geolocation.watchPosition(
 		
-	// Got location callback
+	// Got location callbackw
 	function(pos) {
 		let lat = pos.coords.latitude.toFixed(4)
 		let lon = pos.coords.longitude.toFixed(4)
@@ -21,16 +21,17 @@ else navigator.geolocation.watchPosition(
 		)
 		$('#lon').text(
 			(lon.substring(0,1)=='-')? // Negative values are East
-				lon.substring(1)+' E' : lon+' W'
+				lon.substring(1)+' W' : lon+' E'
 		)
 		
-		// Get altitude
-		if (pos.coords.altitude)
+		// Get altitude 
+		if (pos.coords.altitude) {
 			$('#alt').show().text(
 				(metric)? // Convert to feet if needed
 					pos.coords.altitude.toFixed(1)+' m':
-					(pos.coords.altitude*0.3048).toFixed(1)+' ft'
+					(pos.coords.altitude*3.28084).toFixed(1)+' ft'
 			)
+	}
 		else $('#alt').hide()
 	},
 	
