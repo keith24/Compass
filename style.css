@@ -38,7 +38,7 @@ header, main, footer, .error, noscript {
 }
 
 @media (orientation:portrait) {
-	.error#rotated { display: none; }
+	/*.error#rotated { display: none; }*/
 	header, main, footer {
 		width: 90vw;
 		padding: 5vw;
@@ -66,7 +66,7 @@ header, main, footer, .error, noscript {
 	}
 }
 @media (orientation:landscape) {
-	.error#rotated { display: block; }
+	/*.error#rotated { display: block; }*/
   header, main, footer {
     height: 90vh;
     padding: 5vh;
