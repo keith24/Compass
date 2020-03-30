@@ -47,8 +47,8 @@
 		<header>
 			
 			<div class='error' id='no-gps'>No GPS data available. </div>
-			<div class='coord' id='lat'>0.00000 N</div>
-			<div class='coord' id='lon'>0.00000 E</div>
+			<div class='coord' id='lat'>0.0000 N</div>
+			<div class='coord' id='lon'>0.0000 W</div>
 			
 			<div class='coord' id='alt'></div>
 			
@@ -58,7 +58,6 @@
 			
 			<noscript>You need javascript to use this. </noscript>
 			<div class='error' id='no-dir'>No direction available.  Try this on a smartphone with an internal compass.</div>
-			<div class='error' id='rotated'>Note: the compass may be 90&deg; off when used in landscape mode.</div>
 			
 			<img id='rose' src="rose.svg">
 			
@@ -66,11 +65,12 @@
 		
 		<footer>
 			<div id='about'><a href="https://github.com/keith24/Compass/blob/master/README.md">About</a></div>
-			<div id='by'>by <a href="https://keithirwin.us/">Keith Irwin</a></div>
+			<div id='by'>by <a href="https://www.keithirwin.us/">Keith Irwin</a></div>
 		</footer>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="script.js"></script>
+		<script src="coordinates.js"></script>
+		<script src="direction.js"></script>
 		
 	</body>
 	
