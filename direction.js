@@ -5,7 +5,7 @@
 window.addEventListener('deviceorientation', function(e){
 	
 	// No orientation data
-	if(!e) $('#no-dir').show()
+	if(!e||!e.alpha) $('#no-dir').show()
 	
 	// Set orientation
 	else {
